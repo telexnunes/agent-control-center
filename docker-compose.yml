@@ -9,7 +9,7 @@ services:
     container_name: acc-frontend
     hostname: acc-frontend
     restart: on-failure
-    image: gustavoperezyssy/agent-control-center-frontend:1.0
+    image: telexnunes/agent-control-center-frontend:1.0
     expose:
       - 3000
     ports:
@@ -26,7 +26,7 @@ services:
     container_name: acc-backend
     hostname: acc-backend
     restart: on-failure
-    image: gustavoperezyssy/agent-control-center-backend:1.0
+    image: telexnunes/agent-control-center-backend:1.0
     expose:
       - 8080
     ports:
@@ -40,7 +40,7 @@ services:
   ########################################################
 
   acc-mongodb:
-    image: gustavoperezyssy/agent-control-center-mongodb:1.0
+    image: telexnunes/agent-control-center-mongodb:1.0
     container_name: acc-mongodb
     hostname: acc-mongodb
     restart: on-failure
