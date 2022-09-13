@@ -1,0 +1,55 @@
+version: "3.5"
+
+services:
+  ########################################################
+  ### Frontend
+  ########################################################
+
+  acc-frontend:
+    container_name: acc-frontend
+    hostname: acc-frontend
+    restart: on-failure
+    image: gustavoperezyssy/agent-control-center-frontend:1.0
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    env_file: ./config/setup.env
+    networks:
+      - acc-net
+
+  ########################################################
+  ### Backend
+  ########################################################
+
+  acc-backend:
+    container_name: acc-backend
+    hostname: acc-backend
+    restart: on-failure
+    image: gustavoperezyssy/agent-control-center-backend:1.0
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    env_file: ./config/setup.env
+    networks:
+      - acc-net
+
+  ########################################################
+  ### Databases
+  ########################################################
+
+  acc-mongodb:
+    image: gustavoperezyssy/agent-control-center-mongodb:1.0
+    container_name: acc-mongodb
+    hostname: acc-mongodb
+    restart: on-failure
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+    networks:
+      - acc-net
+
+networks:
+  acc-net:
